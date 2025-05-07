@@ -1,4 +1,4 @@
-# Exp.No:32  
+ Exp.No:32  
 ## CONVERSION OF INFIX TO POSTFIX
 
 ---
@@ -30,11 +30,44 @@ To write a Python program to convert a given Infix expression to Postfix express
 ### PROGRAM
 
 ```
+#Reg.NO-212223060119
+#Name-Kavindra T G
+def infix_to_postfix(expression):
+    stack = []
+    output = ''
+    operators = {'/', '-', '&'}
+    precedence = {'/': 2, '-': 1, '&': 0}
+
+    for char in expression:
+        if char not in operators and char not in {'(', ')'}:
+            output += char
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                output += stack.pop()
+            stack.pop()
+        else:
+            while (stack and stack[-1] != '(' and
+                   precedence[stack[-1]] >= precedence[char]):
+                output += stack.pop()
+            stack.append(char)
+
+    while stack:
+        output += stack.pop()
+
+    return output
+
+infix_expr = "a/(b-c)&d"
+postfix_expr = infix_to_postfix(infix_expr)
+print("Postfix Expression:", postfix_expr)
+
 
 ```
 
 ### OUTPUT
+![image](https://github.com/user-attachments/assets/aff2c608-2c04-479f-8b27-7ccbe53ec032)
 
 
 ### RESULT
-
+Thus, the python program to convert a given Infix expression to Postfix expression by following the precedence and associative rules. The input expression contains only Division, Subtraction, and Bitwise AND operators. A dictionary is used to set the priority for operators, and a set is used to hold the operators used in the given expression has been executed and verified successfully.
