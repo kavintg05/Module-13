@@ -27,5 +27,39 @@ To write a Python program to implement a stack using a list and its built-in met
 ### PROGRAM
 
 ```
+class st:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, num):
+        self.stack.append(num)
+
+    def pop(self):
+        if not self.stack:
+            return "Stack is empty"
+        return self.stack.pop()
+
+    def display(self):
+        return self.stack
+
+s = st()
+size = int(input("Enter the size of the stack: "))
+
+for i in range(1, size + 1):
+    if i % 2 != 0:
+        s.push(i)
+
+print("Stack after pushing odd numbers:", s.display())
+
+popped = s.pop()
+print("Popped element:", popped)
+
+print("Stack after popping:", s.display())
+
 
 ```
+### OUTPUT
+![image](https://github.com/user-attachments/assets/c5a2639f-010a-4a12-bf2d-d0d409e6d2b9)
+
+### RESULT
+Thus, the python program to implement a stack using a list and its built-in methods (`append()`, `pop()`) has been executed and verified successfully.
